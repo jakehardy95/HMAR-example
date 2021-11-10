@@ -7,8 +7,6 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import Landing from '../pages/Landing';
 import NavBar from '../components/NavBar';
 import ListStuff from '../pages/ListStuff';
-import ListStuffAdmin from '../pages/ListStuffAdmin';
-import AddStuff from '../pages/AddStuff';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -21,6 +19,11 @@ import TurtleSighting from '../pages/TurtleSighting';
 import Other from '../pages/Other';
 import BirdSighting from '../pages/BirdSighting';
 import InfoDistress from '../pages/InfoDistress';
+import BirdDistress from '../pages/BirdDistress';
+import TurtleDistress from '../pages/TurtleDistress';
+import SealDistress from '../pages/SealDistress';
+import TaskForm from '../pages/TaskForm';
+import TestPage from '../pages/testPage';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -42,10 +45,13 @@ class App extends React.Component {
             <Route path="/signout" component={Signout}/>
             <Route path="/navbar" component={NavBar}/>
             <Route path="/infodistress" component={InfoDistress}/>
+            <Route path="/birddistress" component={BirdDistress}/>
+            <Route path="/turtledistress" component={TurtleDistress}/>
+            <Route path="/sealdistress" component={SealDistress}/>
+            <Route path="/taskform" component={TaskForm}/>
+            <Route path="/testpage" component={TestPage}/>
             <ProtectedRoute path="/list" component={ListStuff}/>
-            <ProtectedRoute path="/add" component={AddStuff}/>
             <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
-            <AdminProtectedRoute path="/admin" component={ListStuffAdmin}/>
             <Route component={NotFound}/>
           </Switch>
         </div>

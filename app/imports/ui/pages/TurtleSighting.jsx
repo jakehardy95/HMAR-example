@@ -12,7 +12,11 @@ const tags = 'https://www.nationalband.com/wp-content/uploads/2017/05/sea-turtle
 
 // Create a schema to specify the structure of the data to appear in the form.
 const formSchema = new SimpleSchema({
-  name: String,
+  name: {
+    type: String,
+    allowedValues: ['Green turtle (Chelonia mydas) Cm', 'Hawksbill turtle (Eretmochelys imbricata) Ei'],
+    defaultValue: 'Green turtle (Chelonia mydas) Cm',
+  },
   phone: String,
   location: String,
   description: String,
@@ -39,7 +43,7 @@ class TurtleSighting extends React.Component {
         if (error) {
           swal('Error', error.message, 'error');
         } else {
-          swal('Success', 'Item added successfully', 'success');
+          swal('Success', 'Record added successfully', 'success');
           formRef.reset();
         }
       });
@@ -55,7 +59,7 @@ class TurtleSighting extends React.Component {
           <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
             <Segment>
               <Header textAlign='center'> Contact Info</Header>
-              <TextField name='name'/>
+              <SelectField name='name'/>
               <TextField name='phone' decimal={false}/>
               <Header textAlign='center'> Sighting Info</Header>
               <TextField name='location'/>
